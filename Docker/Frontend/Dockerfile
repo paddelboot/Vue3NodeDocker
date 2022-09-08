@@ -1,10 +1,12 @@
-FROM node:18
+FROM node:16
 
 WORKDIR /var/www/frontend
 
 COPY ./package.json .
 
 RUN npm install
+
+RUN mkdir -p ./node_modules/.vite/deps_temp && chmod -R 777 ./node_modules/
 
 EXPOSE 80
 
