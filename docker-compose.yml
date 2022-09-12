@@ -1,21 +1,22 @@
 services:
     frontend:
-      container_name: vue-heulwand
+      container_name: vue-frontend
       build:
-        context: ./Docker/Frontend/
+        context: ./docker/frontend/
       ports: 
         - "80:5173"
       volumes:
-        - /var/www/heulwand-project/frontend:/var/www/frontend
+        - ./frontend:/var/www/frontend
         - frontend_volume:/var/www/frontend/node_modules
     backend:
+      container_name: node-backend
       build:
-        context: ./Docker/Backend
+        context: ./docker/backend
       environment:
         - NODE_ENV=development
         - ROOT=/home/node/app
       volumes:
-        - /var/www/heulwand-project/backend:/home/node/app/
+        - ./backend:/home/node/app/
         - backend_volume:/home/node/app/node_modules
       ports:
         - "3000:3000"
