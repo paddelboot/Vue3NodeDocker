@@ -2,7 +2,7 @@ services:
     frontend:
       container_name: vue-frontend
       build:
-        context: ./docker/frontend/
+        context: ./devops/docker/frontend/
       ports: 
         - "80:5173"
       volumes:
@@ -11,7 +11,7 @@ services:
     backend:
       container_name: node-backend
       build:
-        context: ./docker/backend
+        context: ./devops/docker/backend
       environment:
         - NODE_ENV=development
         - ROOT=/home/node/app
