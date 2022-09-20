@@ -1,0 +1,24 @@
+@import 'header';
+
+
+@media (min-width: 1024px) {
+    body {
+        display: flex;
+        place-items: center;
+    }
+
+    #app {
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: [header] 1fr [main] 1fr;
+        padding: 0 2rem;
+        border: 3px solid blue;
+
+    }
+
+    main{
+        grid-area: main;
+        display: flex;
+        justify-content: center;
+    }
+}
