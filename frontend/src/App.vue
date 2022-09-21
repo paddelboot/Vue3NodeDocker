@@ -1,38 +1,23 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router";
+import { RouterView } from "vue-router";
+import TheHeader from '@/components/TheHeader.vue';
 </script>
 
 <template>
-  <header>
-    <div class="logo">
-      <img alt="Vue logo" class="logo" src="@/assets/hans-logo.svg" width="125" height="125" />
-    </div>
-    <nav>
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/upload">Foto hochladen</RouterLink>
-    </nav>
-  </header>
 
-  <RouterView />
+  <TheHeader />
+
+  <main>
+    <RouterView />
+  </main>
+
 </template>
 
 <style scoped lang="scss">
-header {
-  grid-area: header;
-  display: flex;
-  flex-direction: column;
+@media (min-width: 1024px) {
 
-  .logo {
-    justify-content: center;
-    display: flex;
-  }
-
-  nav {
-    text-align: center;
-
-    a{
-      padding: 0 5px;
-    }
+  main {
+    grid-area: main;
   }
 }
 </style>
