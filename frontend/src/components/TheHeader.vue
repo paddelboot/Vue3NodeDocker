@@ -27,7 +27,7 @@ header {
     flex-direction: column;
 
     a {
-        padding: 0 5px;
+        padding: 0 10px;
         text-decoration: none;
         text-transform: uppercase;
         color: darkblue;

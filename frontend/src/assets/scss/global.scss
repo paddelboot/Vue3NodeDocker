@@ -9,11 +9,15 @@
     }
 
     #app {
-        min-height: 100vh;
         display: grid;
-        grid-template-rows: [header] 1fr [main] 1fr;
-        padding: 0 2rem;
-        border: 3px solid blue;
-
+        width: 100vw;
+        padding: 40px 20px;
+        grid-template-columns: repeat( 4, 1fr );
+        grid-template-rows: 2fr 5fr 1fr;
+        row-gap: 20px;
+        grid-template-areas: 
+          "header header header header"
+          "main main main main"
+          "footer footer footer footer";
     }
 }

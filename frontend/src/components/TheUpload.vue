@@ -1,43 +1,23 @@
 <template>
   <section>
-    <div class="dragdrop">
-      <div class="droparea">
-        <label>Dateien hier hinziehen</label>
-      </div>
-    </div>
-    <div class="dialog">
-      <input type="file" ref="uploaded_image" />
-    </div>
-    <div>
-      <button @click="upload()">Hochladen</button>
-    </div>
+    <DropZone>Drop stuff here</DropZone>
   </section>
 </template>
 
 <script setup lang="ts">
 
 import { ref } from 'vue';
-
-const uploaded_image = ref(null);
-
-const upload = async () => {
-
-  console.log(uploaded_image.value.files[0]);
-}
+import DropZone from '@/components/DropZone.vue';
 </script>
 
 <style scoped lang="scss">
-.dragdrop {
-  width: 100%;
-
-  .droparea {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 200px;
-    border-radius: 10px;
-    border: 1px dotted grey;
-  }
+.dropzone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  border-radius: 10px;
+  border: 1px dotted grey;
 }
 
 

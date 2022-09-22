@@ -5,5 +5,12 @@
         grid-area: main;
         display: flex;
         justify-content: center;
+
+        &>section{
+            display: flex;
+            justify-content: flex-start;
+            width: 50vw;
+            max-width: 50vw;
+        }
     }
 }

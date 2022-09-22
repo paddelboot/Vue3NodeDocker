@@ -5,17 +5,4 @@
     display: flex;
     place-items: top;
   }
-
-  #app {
-    display: grid;
-    width: 100vw;
-    padding: 40px 20px;
-    grid-template-columns: repeat( 4, 1fr );
-    grid-template-rows: 2fr 5fr 1fr;
-    row-gap: 20px;
-    grid-template-areas: 
-      "header header header header"
-      "main main main main"
-      "footer footer footer footer";
-  }
 }
