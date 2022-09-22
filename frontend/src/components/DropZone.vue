@@ -1,6 +1,6 @@
 <template>
-    <div @drop.prevent="onDrop" @dragenter.prevent="onDragEnter" @dragleave.prevent="onDragLeave" class="dropzone" :class="isActive ? 'active' : ''">
-        <slot :isActive="isActive"></slot>
+    <div @drop.prevent="onDrop" @dragenter.prevent="onDragEnter" @dragleave.prevent="onDragLeave" class="dropzone" :data-active="active">
+        <slot :active="active"></slot>
     </div>
 </template>
 
@@ -8,7 +8,7 @@
     .dropzone{
         width: 100%;
 
-        &.active{
+        &[data-active="true"]{
             background: rgb(226, 248, 226);
         }
     }
@@ -19,18 +19,20 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 
 const emit = defineEmits(['files-dropped']);
-const isActive = ref();
+const active = ref();
 
 function onDrop( e : any ) {
+    // console.log( e.dataTransfer.files );
+    // console.log( [...e.dataTransfer.files] );
     emit( 'files-dropped', [...e.dataTransfer.files])
 }
 
 function onDragEnter() {
-    isActive.value = true;
+    active.value = true;
 }
 
 function onDragLeave() {
-    isActive.value = false;
+    active.value = false;
 }
 
 function preventDefaults( e : any ) {
