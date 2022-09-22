@@ -22,8 +22,8 @@ const emit = defineEmits(['files-dropped']);
 const active = ref();
 
 function onDrop( e : any ) {
-    // console.log( e.dataTransfer.files );
-    // console.log( [...e.dataTransfer.files] );
+    console.log( e.dataTransfer.files );
+    console.log( [ ...e.dataTransfer.files ] );
     emit( 'files-dropped', [...e.dataTransfer.files])
 }
 

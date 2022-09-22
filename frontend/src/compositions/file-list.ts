@@ -4,7 +4,7 @@ export default function() {
 
     const files = ref<UploadableFile[]>([]);
 
-    function addFiles( newFiles: any ) {
+    function addFiles( newFiles: FileList | Array<File> ) {
 
         let newUploadableFiles : UploadableFile[] = [ ...newFiles ]
             .map( (file ) => new UploadableFile( file ))
