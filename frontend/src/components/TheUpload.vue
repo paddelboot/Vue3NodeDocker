@@ -1,13 +1,25 @@
 <template>
   <section>
-    <DropZone>Drop stuff here</DropZone>
+    <DropZone class="drop-area" @files-dropped="addFiles" #default="{ dropZoneActive }">
+
+      <div v-if="dropZoneActive">
+        <div>Drop them</div>
+      </div>
+
+      <div v-else>
+        <div>Drop stuff here</div>
+      </div>
+      
+    </DropZone>
   </section>
 </template>
 
 <script setup lang="ts">
 
-import { ref } from 'vue';
 import DropZone from '@/components/DropZone.vue';
+import useFileList from '@/compositions/file-list';
+
+const { files, addFiles, removeFile } = useFileList()
 </script>
 
 <style scoped lang="scss">

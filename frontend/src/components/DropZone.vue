@@ -1,6 +1,6 @@
 <template>
     <div @drop.prevent="onDrop" @dragenter.prevent="onDragEnter" @dragleave.prevent="onDragLeave" class="dropzone" :data-active="active">
-        <slot :active="active"></slot>
+        <slot :dropZoneActive="active"></slot>
     </div>
 </template>
 
