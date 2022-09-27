@@ -11,6 +11,8 @@ export default function() {
             .filter( ( file ) => !fileExists( file.id ) );
 
         files.value = files.value.concat( newUploadableFiles );
+
+        console.log( files.value );
     }
 
     function fileExists( otherId : string ) {

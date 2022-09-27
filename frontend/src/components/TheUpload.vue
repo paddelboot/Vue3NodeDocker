@@ -9,6 +9,8 @@
       <div v-else>
         <div>Drop stuff here</div>
       </div>
+
+      <input type="file" @change="onInputChange" />
       
     </DropZone>
   </section>
@@ -19,7 +21,16 @@
 import DropZone from '@/components/DropZone.vue';
 import useFileList from '@/compositions/file-list';
 
-const { files, addFiles, removeFile } = useFileList()
+const { files, addFiles, removeFile } = useFileList();
+
+interface InputFileEvent extends Event {
+    target: HTMLInputElement;
+}
+
+function onInputChange( e : InputFileEvent ) {
+
+  addFiles( e.target.files );
+}
 </script>
 
 <style scoped lang="scss">
