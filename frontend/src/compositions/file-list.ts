@@ -4,15 +4,17 @@ export default function() {
 
     const files = ref<UploadableFile[]>([]);
 
-    function addFiles( newFiles: Array<File> ) {
+    function addFiles( newFiles: FileList | null ) {
 
-        let newUploadableFiles : UploadableFile[] = [ ...newFiles ]
+        if ( newFiles == null ) return;
+
+        let newUploadableFiles : UploadableFile[] = Object.values( newFiles )
             .map( (file ) => new UploadableFile( file ))
             .filter( ( file ) => !fileExists( file.id ) );
 
         files.value = files.value.concat( newUploadableFiles );
 
-        console.log( files.value );
+        console.log( files.value )
     }
 
     function fileExists( otherId : string ) {

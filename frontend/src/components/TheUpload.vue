@@ -1,17 +1,21 @@
 <template>
   <section>
-    <DropZone class="drop-area" @files-dropped="addFiles" #default="{ dropZoneActive }">
+    <DropZone @files-dropped="addFiles">
 
-      <div v-if="dropZoneActive">
-        <div>Drop them</div>
-      </div>
+      <template #dropZone="{ dropZoneActive }">
+        <div v-if="dropZoneActive">
+          <div>Drop them</div>
+        </div>
 
-      <div v-else>
-        <div>Drop stuff here</div>
-      </div>
+        <div v-else>
+          <div>Drop stuff here</div>
+        </div>
+      </template>
 
-      <input type="file" @change="onInputChange" />
-      
+      <template #fileInput>
+        <div><input type="file" @change="onInputChange" id="fileInput" /></div>
+      </template>
+
     </DropZone>
   </section>
 </template>
@@ -23,27 +27,13 @@ import useFileList from '@/compositions/file-list';
 
 const { files, addFiles, removeFile } = useFileList();
 
-interface InputFileEvent extends Event {
-    target: HTMLInputElement;
-}
-
-function onInputChange( e : InputFileEvent ) {
-
-  addFiles( e.target.files );
+function onInputChange(e: Event) {
+  addFiles((e.target as HTMLInputElement).files);
+  (e.target as HTMLInputElement).value = '';
 }
 </script>
 
 <style scoped lang="scss">
-.dropzone {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 200px;
-  border-radius: 10px;
-  border: 1px dotted grey;
-}
-
-
 @media (min-width: 1024px) {
   section {
     display: flex;
@@ -53,9 +43,6 @@ function onInputChange( e : InputFileEvent ) {
 
     padding: 30px 0;
 
-    >div {
-      margin-bottom: 20px;
-    }
   }
 }
 </style>
