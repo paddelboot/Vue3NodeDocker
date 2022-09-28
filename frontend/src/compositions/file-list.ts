@@ -1,4 +1,5 @@
 import { ref } from 'vue';
+import type IUploadableFile from '@/interfaces/IUploadableFile';
 
 export default function() {
 
@@ -14,7 +15,7 @@ export default function() {
 
         files.value = files.value.concat( newUploadableFiles );
 
-        console.log( files.value )
+        console.log( files.value );
     }
 
     function fileExists( otherId : string ) {
@@ -32,14 +33,12 @@ export default function() {
     return { files, addFiles, removeFile };
 }
 
-interface UploadableFile {
-    file : object;
-    id : string;
-    url : string;
-    status : string | null;
-}
+class UploadableFile implements IUploadableFile {
 
-class UploadableFile {
+    file : File;
+    id : string;
+    url: string;
+    status: string | null;
 
     constructor( file : File ) {
         this.file = file;

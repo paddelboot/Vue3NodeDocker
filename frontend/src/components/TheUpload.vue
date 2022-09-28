@@ -16,6 +16,12 @@
         <div><input type="file" @change="onInputChange" id="fileInput" /></div>
       </template>
 
+      <template #filePreview>
+        <ul v-show="files.length" class="preview">
+          <FilePreview v-for="file of files" :file="file" @remove="removeFile" />
+        </ul>
+      </template>
+
     </DropZone>
   </section>
 </template>
@@ -24,6 +30,7 @@
 
 import DropZone from '@/components/DropZone.vue';
 import useFileList from '@/compositions/file-list';
+import FilePreview from '@/components/FilePreview.vue';
 
 const { files, addFiles, removeFile } = useFileList();
 
@@ -45,6 +52,14 @@ function onInputChange(e: Event) {
 
   }
 }
+
+ul.preview{
+
+  display: flex;
+  list-style: none;
+}
+
+
 </style>
 
 

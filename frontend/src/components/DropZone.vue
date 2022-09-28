@@ -1,14 +1,14 @@
 <template>
-    <div @drop.prevent="onDrop" @dragenter.prevent="onDragEnter" @dragleave.prevent="onDragLeave" class="dropzone">
+    <div  class="dropzone">
 
-        <label for="fileInput" :data-active="active">
-            <slot name="dropZone" :dropZoneActive="active">
-
-            </slot>
+        <label for="fileInput" :data-active="active" @drop.prevent="onDrop" @dragenter.prevent="onDragEnter" @dragleave.prevent="onDragLeave">
+            <slot name="dropZone" :dropZoneActive="active"></slot>
 
             <slot name="fileInput"></slot>
 
         </label>
+
+        <slot name="filePreview"></slot>
 
     </div>
 </template>
@@ -35,19 +35,21 @@
 
         cursor: pointer;
 
+        &>*{
+            pointer-events: none;
+        }
+
         &[data-active="true"] {
             background: rgb(226, 248, 226);
         }
 
-        >div {
+        &>div {
             flex-basis: 20%;
 
             display: flex;
             align-items: center;
         }
     }
-
-
 
     input[type=file]::file-selector-button {
         margin-right: 20px;
@@ -59,8 +61,6 @@
         cursor: pointer;
         transition: background .2s ease-in-out;
     }
-
-
 }
 </style>
 
@@ -75,6 +75,7 @@ function onDrop(e: DragEvent) {
     // console.log( e.dataTransfer.files );
     // console.log( [ ...e.dataTransfer.files ] );
     e.dataTransfer !== null ? emit('files-dropped', e.dataTransfer.files) : '';
+    active.value = false;
 }
 
 function onDragEnter() {
