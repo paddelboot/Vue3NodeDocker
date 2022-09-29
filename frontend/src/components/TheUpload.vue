@@ -26,6 +26,28 @@
   </section>
 </template>
 
+<style scoped lang="scss">
+@media (min-width: 1024px) {
+  section {
+    display: flex;
+    max-width: 50vw;
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 30px 0;
+
+  }
+}
+
+ul.preview {
+
+  display: flex;
+  margin-top: 30px;
+  padding: 0;
+  list-style: none;
+}
+</style>
+
 <script setup lang="ts">
 
 import DropZone from '@/components/DropZone.vue';
@@ -40,26 +62,6 @@ function onInputChange(e: Event) {
 }
 </script>
 
-<style scoped lang="scss">
-@media (min-width: 1024px) {
-  section {
-    display: flex;
-    max-width: 50vw;
-    flex-direction: column;
-    align-items: flex-start;
 
-    padding: 30px 0;
-
-  }
-}
-
-ul.preview{
-
-  display: flex;
-  list-style: none;
-}
-
-
-</style>
 
 

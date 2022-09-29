@@ -86,7 +86,7 @@ function onDragLeave() {
     active.value = false;
 }
 
-function preventDefaults(e: any) {
+function preventDefaults(e: Event | DragEvent ) {
     e.preventDefault()
 }
 

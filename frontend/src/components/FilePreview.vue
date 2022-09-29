@@ -8,7 +8,7 @@
 <style scoped lang="scss">
 li {
     flex-basis: 20%;
-    padding: 2px; 
+    padding: 0 5px; 
 
     img{
         display: block;
