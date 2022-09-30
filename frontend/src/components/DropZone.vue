@@ -2,6 +2,7 @@
     <div  class="dropzone">
 
         <label for="fileInput" :data-active="active" @drop.prevent="onDrop" @dragenter.prevent="onDragEnter" @dragleave.prevent="onDragLeave">
+            
             <slot name="dropZone" :dropZoneActive="active"></slot>
 
             <slot name="fileInput"></slot>
