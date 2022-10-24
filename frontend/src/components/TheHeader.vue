@@ -1,53 +1,55 @@
 <template>
-    <header>
-        <div class="logo">
-            <img alt="Vue logo" class="logo" src="@/assets/images/hans-logo.svg" width="125" height="125" />
-        </div>
-        <nav>
-            <ul>
-                <li>
-                    <RouterLink to="/">Home</RouterLink>
-                </li>
-                <li>
-                    <RouterLink to="/upload">Foto hochladen</RouterLink>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    <div class="logo">
+        <img alt="Vue logo" class="logo" src="@/assets/images/hans-logo.svg" width="125" height="125" />
+    </div>
+    <nav>
+        <ul>
+            <li>
+                <RouterLink to="/">Home</RouterLink>
+            </li>
+            <li>
+                <RouterLink to="/projekte">Projekte</RouterLink>
+            </li>
+            <li v-show="loggedIn">
+                <RouterLink to="/upload">Foto hochladen</RouterLink>
+            </li>
+            <li v-show="isAdmin">
+                <RouterLink to="/admin">Admin</RouterLink>
+            </li>
+        </ul>
+    </nav>
 </template>
 
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
+import { ref } from 'vue';
+
+const loggedIn = ref(true);
+const isAdmin = ref(false);
 </script>
 
 <style scoped lang="scss">
-header {
-    grid-area: header;
+a {
+    padding: 0 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: darkblue;
+}
+
+.logo {
+    justify-content: center;
     display: flex;
-    flex-direction: column;
+}
 
-    a {
-        padding: 0 10px;
-        text-decoration: none;
-        text-transform: uppercase;
-        color: darkblue;
-    }
+nav {
+    padding: 100px 0 20px;
+    display: flex;
+    justify-content: center;
 
-    .logo {
-        justify-content: center;
+    ul {
         display: flex;
-    }
-
-    nav {
-        padding: 20px 0;
-        display: flex;
-        justify-content: center;
-
-        ul{
-            display: flex;
-            list-style: none;
-            padding: 0;
-        }
+        list-style: none;
+        padding: 0;
     }
 }
 </style>

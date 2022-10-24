@@ -1,39 +1,16 @@
-<script setup lang="ts">
-import { RouterView } from "vue-router";
-import TheHeader from '@/components/TheHeader.vue';
-</script>
-
 <template>
-
-  <TheHeader />
-
-  <main>
-    <RouterView />
-  </main>
-
+        <RouterView />
 </template>
 
-<style scoped lang="scss">
-@media (min-width: 1024px) {
+<script setup lang="ts">
+import { watch } from "vue";
+import { RouterView, useRoute } from "vue-router";
 
-  main {
-    grid-area: main;
-  }
+const route = useRoute();
 
-  @media (min-width: 1024px) {
+// watch( route, ( newRoute ) => {
+//         console.log( newRoute.params.project );
+// } );
 
-    main {
-      grid-area: main;
-      display: flex;
-      justify-content: center;
-
-      &>section {
-        display: flex;
-        justify-content: flex-start;
-        width: 50%;
-        max-width: 50%;
-      }
-    }
-  }
-}
-</style>
+// console.log( route.name );
+</script>

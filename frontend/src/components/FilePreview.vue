@@ -19,7 +19,7 @@ li {
 
 <script setup lang="ts">
 
-import type IUploadableFile from '@/interfaces/IUploadableFile';
+import type IUploadableFile from '@/interfaces/UploadableFileHandler';
 import type { PropType } from 'vue';
 
 defineEmits([ 'remove' ] );
