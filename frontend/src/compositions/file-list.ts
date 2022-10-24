@@ -1,16 +1,18 @@
 import { ref } from 'vue';
-import type IUploadableFile from '@/interfaces/IUploadableFile';
 
-export default function() {
+import type UploadableFileHandler from '@/interfaces/UploadableFileHandler';
+import FileHandler from '@/classes/FileHandler';
 
-    const files = ref<UploadableFile[]>([]);
+export default () => {
 
-    function addFiles( newFiles: FileList | null ) {
+    const files = ref<UploadableFileHandler[]>([]);
+
+    const addFiles = ( newFiles: FileList | null ) => {
 
         if ( newFiles == null ) return;
 
-        let newUploadableFiles : UploadableFile[] = Object.values( newFiles )
-            .map( (file ) => new UploadableFile( file ))
+        let newUploadableFiles : UploadableFileHandler[] = Object.values( newFiles )
+            .map( (file ) => new FileHandler( file ))
             .filter( ( file ) => !fileExists( file.id ) );
 
         files.value = files.value.concat( newUploadableFiles );
@@ -23,7 +25,7 @@ export default function() {
         return files.value.some(( { id } ) => id === otherId );
     }
 
-    function removeFile( file : UploadableFile ) {
+    function removeFile( file : UploadableFileHandler ) {
 
         const index = files.value.indexOf( file );
 
@@ -33,18 +35,3 @@ export default function() {
     return { files, addFiles, removeFile };
 }
 
-class UploadableFile implements IUploadableFile {
-
-    file : File;
-    id : string;
-    url: string;
-    status: string | null;
-
-    constructor( file : File ) {
-        this.file = file;
-        this.id = `${file.name}-${file.size}-${file.lastModified}-${file.type}`;
-        this.url = URL.createObjectURL( file );
-        this.status = null;
-
-    }
-}

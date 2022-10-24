@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import ViewHome from "../views/ViewHome.vue";
+import ViewHome from "@/views/ViewHome.vue";
 import TheUpload from "../components/TheUpload.vue";
 import ViewProjects from "@/views/ViewProjects.vue";
 import ViewAdmin from '@/views/ViewAdmin.vue';
