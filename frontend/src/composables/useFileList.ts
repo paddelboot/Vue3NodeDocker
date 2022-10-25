@@ -1,37 +1,48 @@
 import { ref } from 'vue';
 
-import type UploadableFileHandler from '@/interfaces/UploadableFileHandler';
-import FileHandler from '@/classes/FileHandler';
+import type UploadableFileHandler from '@/interfaces/UploadableFileHandler'
+import FileHandler from '@/classes/FileHandler'
+import { useImageStore } from '@/stores/useImageStore'
 
 export default () => {
 
-    const files = ref<UploadableFileHandler[]>([]);
+    const store = useImageStore()
 
-    const addFiles = ( newFiles: FileList | null ) => {
+    const files = ref<UploadableFileHandler[]>([])
 
-        if ( newFiles == null ) return;
+    const addFiles = (newFiles: FileList | null) => {
 
-        let newUploadableFiles : UploadableFileHandler[] = Object.values( newFiles )
-            .map( (file ) => new FileHandler( file ))
-            .filter( ( file ) => !fileExists( file.id ) );
+        if (newFiles == null) return
 
-        files.value = files.value.concat( newUploadableFiles );
+        let newUploadableFiles: UploadableFileHandler[] = Object.values(newFiles)
+            .map((file) => new FileHandler(file))
+            .filter((file) => !fileExists(file.id))
 
-        console.log( files.value );
+        store.addCount(newUploadableFiles.length)
+
+        files.value = files.value.concat(newUploadableFiles)
+
+        //console.log( files.value );
     }
 
-    function fileExists( otherId : string ) {
+    function fileExists(otherId: string) {
 
-        return files.value.some(( { id } ) => id === otherId );
+        return files.value.some(({ id }) => id === otherId)
     }
 
-    function removeFile( file : UploadableFileHandler ) {
+    function removeFile(file: UploadableFileHandler) {
 
-        const index = files.value.indexOf( file );
+        const index = files.value.indexOf(file);
 
-        if ( index > -1 ) files.value.splice( index, 1 );
+        if (index > -1) {
+
+            files.value.splice(index, 1)
+
+            store.subtractCount()
+
+        }
     }
 
-    return { files, addFiles, removeFile };
+    return { files, addFiles, removeFile }
 }
 
