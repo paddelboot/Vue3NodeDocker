@@ -19,11 +19,14 @@ export const uploadFiles = ( files : Array<UploadableFileHandler> , url : string
 
 }
 
-export default createUploader = ( url : string ) => {
+export default ( url : string ) => {
 
     return {
         uploadFile : ( file : UploadableFileHandler ) => {
             return uploadFile( file, url )
+        },
+        uploadFiles : ( files: Array<UploadableFileHandler> ) => {
+            return uploadFiles( files, url )
         }
     }
 }
