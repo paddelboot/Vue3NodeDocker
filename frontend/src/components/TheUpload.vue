@@ -28,6 +28,10 @@
             </ul>
           </template>
 
+          <template #upload>
+            <button @click.prevent="uploadFiles( files )" v-show="files.length" class="upload">Upload</button>
+          </template>
+
         </DropZone>
 
       </div>
@@ -58,6 +62,19 @@ ul.preview {
   padding: 0;
   list-style: none;
 }
+
+button.upload{
+  margin-top: 40px;
+  padding: 10px 40px;
+  cursor: pointer;
+  background: none;
+  border-radius: 5px;
+  border: 1px solid grey;
+
+  &:hover{
+    background: lightgray;
+  }
+}
 </style>
 
 <script setup lang="ts">
@@ -66,7 +83,9 @@ import DropZone from '@/components/DropZone.vue';
 import useFileList from '@/compositions/file-list';
 import FilePreview from '@/components/FilePreview.vue';
 import LayoutDefault from '@/layouts/LayoutDefault.vue';
+import fileUploader from '@/compositions/file-uploader';
 
+const { uploadFiles } = fileUploader( 'http://localhost:3000/upload' )
 const { files, addFiles, removeFile } = useFileList();
 
 function onInputChange(e: Event) {
