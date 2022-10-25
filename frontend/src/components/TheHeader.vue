@@ -13,6 +13,9 @@
             <li v-show="loggedIn">
                 <RouterLink to="/upload">Foto hochladen</RouterLink>
             </li>
+            <li v-show="loggedIn">
+                <RouterLink to="/images">Bilder({{store.imageCount}})</RouterLink>
+            </li>
             <li v-show="isAdmin">
                 <RouterLink to="/admin">Admin</RouterLink>
             </li>
@@ -21,11 +24,13 @@
 </template>
 
 <script setup lang="ts">
-import { RouterLink } from 'vue-router';
+import { RouterLink } from 'vue-router'
 import { ref } from 'vue';
+import { useImageStore } from '@/stores/useImageStore'
 
-const loggedIn = ref(true);
-const isAdmin = ref(false);
+const loggedIn = ref(true)
+const isAdmin = ref(false)
+const store = useImageStore()
 </script>
 
 <style scoped lang="scss">

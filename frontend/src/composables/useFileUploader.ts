@@ -1,5 +1,4 @@
 import type UploadableFileHandler from '@/interfaces/UploadableFileHandler';
-import type { U } from 'vitest/dist/global-ea084c9f';
 
 export const uploadFile = async (file: UploadableFileHandler, url: string) => {
 

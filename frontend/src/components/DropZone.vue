@@ -24,6 +24,7 @@
     justify-content: center;
     width: 100%;
     height: 100%;
+    max-height: 50vh;
     margin-bottom: 20px;
 
     label {
