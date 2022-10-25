@@ -11,6 +11,8 @@
 
         <slot name="filePreview"></slot>
 
+        <slot name="upload"></slot>
+
     </div>
 </template>
 
