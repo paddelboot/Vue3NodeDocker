@@ -10,7 +10,7 @@
             <li>
                 <RouterLink to="/projekte">Projekte</RouterLink>
             </li>
-            <li v-show="loggedIn">
+            <li class="upload" v-show="loggedIn">
                 <RouterLink to="/upload">Foto hochladen</RouterLink>
             </li>
             <li v-show="loggedIn">
