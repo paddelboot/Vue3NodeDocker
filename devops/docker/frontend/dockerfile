@@ -1,4 +1,4 @@
-FROM node:16
+FROM cypress/included:10.10.0
 
 WORKDIR /var/www/frontend
 
