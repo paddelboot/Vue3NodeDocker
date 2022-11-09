@@ -6,11 +6,13 @@ export const uploadFile = async (file: UploadableFileHandler, url: string) => {
     formData.append('file', file.file)
 
     file.status = 'loading'
-    let response = await fetch(url, { method: 'POST', body: formData })
+    //let response = await fetch(url, { method: 'POST', body: formData })
 
-    file.status = response.ok
+    //file.status = response.ok
 
-    return response
+    file.status = true
+
+    return true
 }
 
 export const uploadFiles = ( files : Array<UploadableFileHandler> , url : string ) => {
