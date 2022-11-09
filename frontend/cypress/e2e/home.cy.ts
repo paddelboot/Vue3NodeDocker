@@ -6,5 +6,4 @@ describe( "show home page", () => {
         cy.get( "body section.default main" ).contains( "alle projekte vom hans findet man hier" ) 
     })
 
-
 })
