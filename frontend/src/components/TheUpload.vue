@@ -10,11 +10,11 @@
 
           <template #dropZone="{ dropZoneActive }">
             <div v-if="dropZoneActive">
-              <div>Drop them</div>
+              <div class="called-to-action">Drop them</div>
             </div>
 
             <div v-else>
-              <div>Drop stuff here</div>
+              <div class="call-to-action">Drop stuff here</div>
             </div>
           </template>
 
