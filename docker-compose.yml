@@ -6,6 +6,7 @@ services:
         dockerfile: dockerfile
       ports: 
         - "80:5173"
+        - "9229:9229"
       volumes:
         - ./frontend:/var/www/frontend
         - frontend_volume:/var/www/frontend/node_modules
@@ -22,6 +23,7 @@ services:
         - backend_volume:/home/node/app/node_modules
       ports:
         - "3000:3000"
+        - "9229:9229"
 volumes:
   backend_volume: ~
   frontend_volume: ~
